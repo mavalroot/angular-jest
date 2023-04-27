@@ -1,3 +1,22 @@
-<h1 class="text-3xl font-bold underline">
-  Home test
-</h1>
+<form>
+  <mat-form-field appearance="fill">
+    <mat-label>Dog Breed</mat-label>
+    <input
+      style="text-transform: capitalize"
+      type="text"
+      placeholder="Pick one"
+      aria-label="Dog breed"
+      matInput
+      [formControl]="breed"
+      [matAutocomplete]="auto"
+    />
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-option
+        *ngFor="let option of filteredOptions | async"
+        [value]="option"
+      >
+        {{ option | titlecase }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
