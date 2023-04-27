@@ -21,6 +21,12 @@
       "es2020",
       "dom"
     ],
+    "paths": {
+      "@app/*": ["src/app/*"],
+      "@features/*": ["src/app/features/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@core/*": ["src/app/core/*"],
+    },
     "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
