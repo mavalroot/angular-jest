@@ -8,12 +8,13 @@ import { BreedPicturesSelectors } from '@app/core/data-access/breed-pictures';
   styleUrls: ['./pictures.component.scss'],
 })
 export class PicturesComponent {
-  pictures: string[] = [];
-  paginatedPictures: string[] = [];
-  length: number = 0;
-  page: number = 0;
-  size: number = 4;
-  pageSize: number[] = [4, 8, 12, 24];
+  public paginatedPictures: string[] = [];
+  public length: number = 0;
+  public page: number = 0;
+  public size: number = 4;
+  public pageSize: number[] = [4, 8, 12, 24];
+
+  private pictures: string[] = [];
 
   constructor(private readonly store: Store) {
     this.store
