@@ -1,9 +1,18 @@
-<div *ngFor="let picture of paginatedPictures$ | async">
-  <img [src]="picture" alt="Picture of dog" />
+<div class="grid grid-cols-4 gap-2">
+  <div
+    *ngFor="let picture of paginatedPictures"
+    class="h-96 overflow-hidden"
+  >
+    <img
+      class="object-none object-center"
+      [src]="picture"
+      alt="Picture of dog"
+    />
+  </div>
 </div>
 
 <mat-paginator
-  [length]="(pictures$ | async)?.length || 0"
+  [length]="length"
   [pageSize]="size"
   [pageIndex]="page"
   [pageSizeOptions]="[4, 8, 12, 24]"
