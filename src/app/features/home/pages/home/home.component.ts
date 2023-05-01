@@ -2,11 +2,10 @@ import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import {
   BreedPicturesActions,
-  BreedPicturesSelectors,
 } from '@app/core/data-access/breed-pictures';
 import { BreedsActions, BreedsSelectors } from '@app/core/data-access/breeds';
 import { Store } from '@ngrx/store';
-import { Observable, map, of, startWith, tap } from 'rxjs';
+import { Observable, map, of } from 'rxjs';
 
 @Component({
   selector: 'app-home',

@@ -2,7 +2,7 @@ import { createFeature, createReducer, on } from '@ngrx/store';
 
 import * as BreedsAction from './breeds-actions';
 
-interface BreedsState {
+export interface BreedsState {
   readonly data: string[];
 }
 

@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "jest --verbose",
+    "test": "jest --verbose --coverage --watchAll",
     "test:cc": "jest --coverage",
     "test:w": "jest --watchAll"
   },
@@ -48,6 +48,13 @@
     "setupFilesAfterEnv": [
       "<rootDir>/setup-jest.ts"
     ],
-    "globalSetup": "jest-preset-angular/global-setup"
+    "globalSetup": "jest-preset-angular/global-setup",
+    "moduleNameMapper": {
+      "@app/(.*)$": "<rootDir>/src/app/$1",
+      "@features/(.*)$": "<rootDir>/src/app/features/$1",
+      "@shared/(.*)$": "<rootDir>/src/app/shared/$1",
+      "@core/(.*)$": "<rootDir>/src/app/core/$1"
+    },
+    "moduleDirectories": [ "node_modules", "src" ]
   }
 }
