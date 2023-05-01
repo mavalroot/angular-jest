@@ -17,13 +17,9 @@ export class HomeComponent {
   breed = new FormControl('');
   filteredOptions!: Observable<string[]>;
   options: Observable<string[]>;
-  pictures: Observable<string[]> | null;
 
   constructor(private readonly store: Store) {
     this.options = this.store.select(BreedsSelectors.selectBreeds);
-    this.pictures = this.store.select(
-      BreedPicturesSelectors.selectBreedPictures
-    );
   }
 
   ngOnInit(): void {
