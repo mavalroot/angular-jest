@@ -10,7 +10,11 @@
       [formControl]="breed"
       [matAutocomplete]="auto"
     />
-    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+    <mat-autocomplete
+      autoActiveFirstOption
+      #auto="matAutocomplete"
+      (optionSelected)="selectBreed($event.option.value)"
+    >
       <mat-option
         *ngFor="let option of filteredOptions | async"
         [value]="option"
@@ -20,3 +24,9 @@
     </mat-autocomplete>
   </mat-form-field>
 </form>
+
+<div *ngIf="pictures">
+  <div *ngFor="let picture of pictures | async">
+    <img [src]="picture" [alt]="'Picture of dog ' + breed.value + ' breed)'" />
+  </div>
+</div>

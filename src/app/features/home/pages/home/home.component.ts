@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import {
+  BreedPicturesActions,
+  BreedPicturesSelectors,
+} from '@app/core/data-access/breed-pictures';
 import { BreedsActions, BreedsSelectors } from '@app/core/data-access/breeds';
 import { Store } from '@ngrx/store';
 import { Observable, map, of, startWith, tap } from 'rxjs';
@@ -12,20 +16,30 @@ import { Observable, map, of, startWith, tap } from 'rxjs';
 export class HomeComponent {
   breed = new FormControl('');
   filteredOptions!: Observable<string[]>;
-  options!: Observable<string[]>;
+  options: Observable<string[]>;
+  pictures: Observable<string[]> | null;
 
   constructor(private readonly store: Store) {
-    this.store.dispatch(BreedsActions.getBreeds());
+    this.options = this.store.select(BreedsSelectors.selectBreeds);
+    this.pictures = this.store.select(
+      BreedPicturesSelectors.selectBreedPictures
+    );
   }
 
   ngOnInit(): void {
-    this.options = this.store.select(BreedsSelectors.selectBreeds);
+    this.store.dispatch(BreedsActions.getBreeds());
+
     this.filteredOptions = this.options;
 
     this.breed.valueChanges.subscribe((value) => {
-      console.log(value);
       this.filteredOptions = this._filter(value || '');
     });
+  }
+
+  public selectBreed(value: any): void {
+    this.store.dispatch(
+      BreedPicturesActions.getBreedPictures({ breed: value })
+    );
   }
 
   private _filter(value: string): Observable<string[]> {

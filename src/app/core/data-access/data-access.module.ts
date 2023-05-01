@@ -1,3 +1,4 @@
+import { BreedPicturesModule } from './breed-pictures/breed-pictures.module';
 import { NgModule, isDevMode } from '@angular/core';
 import { BreedsModule } from './breeds/breeds.module';
 import { EffectsModule } from '@ngrx/effects';
@@ -12,6 +13,7 @@ import { reducers } from '../core.state';
   declarations: [],
   imports: [
     BreedsModule,
+    BreedPicturesModule,
     StoreModule.forRoot(reducers, {
       runtimeChecks: {
         strictStateImmutability: true,
